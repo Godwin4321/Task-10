@@ -1,0 +1,48 @@
+{
+    "containerDefinitions": [
+        {
+            "name": "strapi-container",
+            "image": "775112909184.dkr.ecr.us-east-1.amazonaws.com/strapi-app:latest",
+            "cpu": 0,
+            "portMappings": [
+                {
+                    "containerPort": 1337,
+                    "hostPort": 1337,
+                    "protocol": "tcp"
+                }
+            ],
+            "essential": true,
+            "environment": [
+                {
+                    "name": "API_TOKEN_SALT",
+                    "value": "testSalt"
+                },
+                {
+                    "name": "ADMIN_JWT_SECRET",
+                    "value": "testAdminSecret"
+                },
+                {
+                    "name": "APP_KEYS",
+                    "value": "testKey1,testKey2"
+                },
+                {
+                    "name": "JWT_SECRET",
+                    "value": "testJwtSecret"
+                }
+            ],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "systemControls": []
+        }
+    ],
+    "family": "strapi-task",
+    "executionRoleArn": "arn:aws:iam::775112909184:role/strapi-ecs-task-execution-role",
+    "networkMode": "awsvpc",
+    "placementConstraints": [],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "512",
+    "memory": "1024",
+    "volumes": []
+}
